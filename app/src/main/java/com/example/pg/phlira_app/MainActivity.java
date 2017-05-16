@@ -85,6 +85,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
 
         //푸쉬 알림창으로 실행했을 경우 바로 메세지 확인창으로 이동
         if(SettingVar.moveMsg == null){
+            //1
         }else{
             Intent intent = new Intent(MainActivity.this, ReadMsgData.class);
             intent.putExtra("num",SettingVar.moveMsg);
@@ -92,7 +93,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
             overridePendingTransition(R.anim.anim_left_slide, R.anim.anim_right_slide);
         }
 
-        Toast.makeText(this, "테스트1", Toast.LENGTH_SHORT).show();
+
 
         //스레드 사용시 사용 (스레드)
         //WebViewUrlCheck wvc = new WebViewUrlCheck();
@@ -146,7 +147,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         }
     }
 
-    class MyWebClient extends WebViewClient {
+    private class MyWebClient extends WebViewClient {
         public boolean shouldOverriderUrlLoading(WebView view, String url) {
             view.loadUrl(url);
             return true;
