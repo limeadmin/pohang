@@ -43,11 +43,15 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     private SendMassgeHandler mMainHandler = null;
     CountDownTimer mCountDown = null;
     boolean appCheck = true;
+    int notifiId = 0;
+    NotificationManager notificationManager;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mMainHandler = new SendMassgeHandler();
+        notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
     }
 
     // [START receive_message]
@@ -66,12 +70,13 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             //mMainHandler.sendEmptyMessage(SettingVar.TOAST_POPUP);
 
             //새로운 Activity 로 팝업창을 띄움
-            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
+            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"),notifiId);
         }else {
             //새로운 Activity 로 팝업창을 띄움
-            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
+            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"),notifiId);
         }
         sendNotification(remoteMessage.getData().get("message"),remoteMessage.getData().get("num"));
+
     }
 
     // Handler 클래스
@@ -107,7 +112,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
     };
 
-    public void MsgPopupAct(String num,String msg){
+    public void MsgPopupAct(String num,String msg,int notiId){
         /**
          * 2017_05_16
          * 작성자 : 서봉교
@@ -118,6 +123,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 .putExtra("num",num)
                 .putExtra("msg",msg)
+                .putExtra("noid",notiId)
                 .putExtra("appchk",appCheck);
 
         startActivity(popupIntent);
@@ -149,11 +155,13 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         Intent intent;
 
         //앱이 실행중일때와 앱이 종료되었을때 알림창 클릭시 실행되는 액티비티 설정
-        if(appCheck){
+        intent = new Intent(this, IntroPage.class);
+
+        /*if(appCheck){
             intent = new Intent(this, ReadMsgData.class);
         }else{
             intent = new Intent(this, IntroPage.class);
-        }
+        }*/
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("num",num);
@@ -183,11 +191,26 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         아이콘이나 제목을 수정해 줄 수 있다.
         */
 
+        /*
 
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        // Notification Field
+
+        Notification.DEFAULT_SOUND : 소리 발생
+        Notification.DEFAULT_VIBRATE : 진동을 발생
+        Notification.DEFAULT_LIGHTS : 불빛 발생
+        Notification.DEFAULT_ALL : 상단의 세 가지를 모두 실행
+
+        Notification.FLAG_ONGOING_EVENT : 노티피케이션이 알림에 뜨지 않고 진행중에 뜨게 되는 플래그
+        Notification.FLAG_INSISTENT : 확인 할 때 까지 집요하게 사운드를 울려주는 플래그
+        Notification.FLAG_NO_CLEAR : 앱의 프로세스를 종료하지 않는 한 노티를 제거 할 수 없게 만드는 플래그
+        Notification.FLAG_ONLY_ALERT_ONCE : 취소되더라도 매번 소리와 진동을 발생하는 플래그
+        Notification.FLAG_SHOW_LIGHTS : LED 불빛을 출력하는 플래그
+        */
+
+
+        notifiId = 2727;
+        notificationManager.notify(notifiId, notificationBuilder.build());
     }
 
     boolean getRunActivity(){

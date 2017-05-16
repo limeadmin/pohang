@@ -1,6 +1,8 @@
 package com.example.pg.phlira_app.msg;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -45,6 +47,10 @@ public class MsgPopup extends Activity implements View.OnClickListener{
 
     AdImgLoadThrea mThread;
 
+    //상단 Notifi 알림바의 ID, 알림창 보기 클릭시 알림바 삭제하기 위해 쓰임
+    int noId = 0;
+    NotificationManager notificationManager;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -65,6 +71,9 @@ public class MsgPopup extends Activity implements View.OnClickListener{
                 // 화면 켜기
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
+        notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         tv = (TextView)findViewById(R.id.msg_pop1);
         tv2 = (TextView)findViewById(R.id.msg_pop2);
         tBtn = (Button)findViewById(R.id.t_btn);
@@ -82,6 +91,7 @@ public class MsgPopup extends Activity implements View.OnClickListener{
         appChk = intent.getBooleanExtra("appchk",false);
         SettingVar.moveMsg = intent.getStringExtra("num");
         String msg = intent.getStringExtra("msg");
+        noId = intent.getIntExtra("noid",0);
 
         // 현재 시간을 msec으로 구한다.
         long now = System.currentTimeMillis();
@@ -151,6 +161,7 @@ public class MsgPopup extends Activity implements View.OnClickListener{
         switch(v.getId()){
             case R.id.t_btn:
                 // 확인버튼을 누르면 앱의 런처액티비티를 호출한다.
+                notificationManager.cancel(noId);
                 Intent intent;
                 if(appChk){
                     intent = new Intent(MsgPopup.this, MainActivity.class);
