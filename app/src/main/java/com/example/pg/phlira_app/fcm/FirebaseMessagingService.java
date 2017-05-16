@@ -66,10 +66,10 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             //mMainHandler.sendEmptyMessage(SettingVar.TOAST_POPUP);
 
             //새로운 Activity 로 팝업창을 띄움
-            MsgPopupAct(remoteMessage.getData().get("num"));
+            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
         }else {
             //새로운 Activity 로 팝업창을 띄움
-            MsgPopupAct(remoteMessage.getData().get("num"));
+            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
         }
         sendNotification(remoteMessage.getData().get("message"),remoteMessage.getData().get("num"));
     }
@@ -107,7 +107,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
     };
 
-    public void MsgPopupAct(String num){
+    public void MsgPopupAct(String num,String msg){
         /**
          * 2017_05_16
          * 작성자 : 서봉교
@@ -117,6 +117,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         Intent popupIntent = new Intent(this, com.example.pg.phlira_app.msg.MsgPopup.class)
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 .putExtra("num",num)
+                .putExtra("msg",msg)
                 .putExtra("appchk",appCheck);
 
         startActivity(popupIntent);
