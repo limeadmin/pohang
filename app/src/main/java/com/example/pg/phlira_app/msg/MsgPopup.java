@@ -1,25 +1,19 @@
 package com.example.pg.phlira_app.msg;
 
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pg.phlira_app.IntroPage;
 import com.example.pg.phlira_app.MainActivity;
 import com.example.pg.phlira_app.R;
 import com.example.pg.phlira_app.inc.SettingVar;
 
-import java.util.List;
 
 /**
  * Created by pg on 2017-05-12.
