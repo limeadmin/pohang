@@ -92,6 +92,8 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
             overridePendingTransition(R.anim.anim_left_slide, R.anim.anim_right_slide);
         }
 
+        Toast.makeText(this, "테스트1", Toast.LENGTH_SHORT).show();
+
         //스레드 사용시 사용 (스레드)
         //WebViewUrlCheck wvc = new WebViewUrlCheck();
         //wvc.start();
