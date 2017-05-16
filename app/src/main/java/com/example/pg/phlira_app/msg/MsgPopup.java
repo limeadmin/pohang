@@ -23,6 +23,8 @@ import java.util.List;
 
 /**
  * Created by pg on 2017-05-12.
+ * 작성자 : 서봉교
+ * 푸시 메세지 팝업창
  */
 
 public class MsgPopup extends Activity{
