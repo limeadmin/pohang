@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@drawable/press_list_click"
+android:padding="8dp"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <TextView
+        android:id="@+id/asub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:textAppearance="?android:attr/textAppearanceInverse"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:lines="1"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="11111"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/new_icon"
+        android:id="@+id/msg_new"
+        />
+
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/acont"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceInverse"
+        android:gravity="center_vertical"
+        android:textColor="@color/gray1"
+        android:textSize="15dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="22222"
+        />
+    <TextView
+        android:id="@+id/adate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceInverse"
+        android:textColor="@color/gray1"
+        android:textSize="15dp"
+        android:text="33333"
+        android:textDirection="rtl"
+        />
+</LinearLayout>
+
+</LinearLayout>

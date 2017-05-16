@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "35392802614",
+    "firebase_url": "https://fcm-app-phkira.firebaseio.com",
+    "project_id": "fcm-app-phkira",
+    "storage_bucket": "fcm-app-phkira.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35392802614:android:8647223efe53953a",
+        "android_client_info": {
+          "package_name": "com.example.pg.phlira_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35392802614-htpvgasqlve5rer9l9kfkknn8lafjssf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzhiTJNVEaLb738fIDHwNmbM94OkM4ku0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

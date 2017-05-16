@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".IntroPage" >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:layout_centerVertical="true"
+       android:orientation="vertical"
+       >
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          >
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/intro_logo" />
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="270dp"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:id="@+id/input_tag"
+          android:visibility="gone"
+          android:layout_gravity="center"
+          >
+
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/id"
+              android:textColor="@color/black2"
+              android:textColorHint="@color/black2"
+              android:textSize="13dp"
+              style="@style/EditText.Login"
+              android:theme="@style/EditText.Login"
+              android:singleLine="true"
+              android:nextFocusDown="@+id/license"
+              android:imeOptions="actionNext"
+              android:hint="포항지역건축사 홈페이지 아이디를 입력하세요"
+              />
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/license"
+              android:textColor="@color/black2"
+              android:textColorHint="@color/black2"
+              android:textSize="13dp"
+              style="@style/EditText.Login"
+              android:theme="@style/EditText.Login"
+              android:singleLine="true"
+              android:hint="면허번호를 입력하세요"
+              android:inputType="number"
+              />
+          <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/press_all_btn"
+              android:textColor="@color/white"
+              android:textStyle="bold"
+              android:textSize="18dp"
+              android:text="인 증 하 기"
+              android:layout_marginTop="8dp"
+              android:id="@+id/do_reg"
+              />
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/reg_notice"
+               android:textSize="14dp"
+               android:textStyle="bold"
+               android:textColor="@color/red"
+               android:layout_marginTop="6dp"
+               android:id="@+id/alert_txt"
+               android:textAlignment="center"
+               />
+      </LinearLayout>
+
+   </LinearLayout>
+
+
+</RelativeLayout>
+

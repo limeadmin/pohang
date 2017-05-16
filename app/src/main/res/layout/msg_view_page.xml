@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+        >
+        <Button
+            android:id="@+id/sdate_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="시작날짜"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textColor="@color/black"
+            android:text=" ~ "
+            android:gravity="center_vertical"
+            />
+        <Button
+            android:id="@+id/edate_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="마지막날짜"
+            android:layout_gravity="center"
+            />
+        <Button
+            android:id="@+id/msg_search"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="검 색"
+            android:layout_gravity="center"
+            />
+  </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:dividerHeight="1dp"
+        android:divider="@color/gray1"
+        />
+
+</LinearLayout>

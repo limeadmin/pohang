@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">phlira_app</string>
+    <string name="subject">제 목</string>
+    <string name="rdate">날 짜</string>
+    <string name="content">내 용</string>
+    <string name="loading">로딩중...</string>
+    <string name="reg_notice">※ 인증 후 사용 가능합니다.</string>
+</resources>
