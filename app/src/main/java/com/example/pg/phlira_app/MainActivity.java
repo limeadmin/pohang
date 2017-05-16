@@ -136,7 +136,10 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 mWeb.reload();
                 break;
             case R.id.btnset:
-
+                //엽션설정창으로 이동
+                Intent sOption = new Intent(MainActivity.this, SettingOption.class);
+                startActivity(sOption);
+                overridePendingTransition(R.anim.anim_left_slide, R.anim.anim_right_slide);
                 break;
         }
     }

@@ -53,7 +53,6 @@ android:padding="8dp"
         android:textSize="15dp"
         android:maxLines="1"
         android:ellipsize="end"
-        android:text="22222"
         />
     <TextView
         android:id="@+id/adate"
@@ -63,7 +62,6 @@ android:padding="8dp"
         android:textAppearance="?android:attr/textAppearanceInverse"
         android:textColor="@color/gray1"
         android:textSize="15dp"
-        android:text="33333"
         android:textDirection="rtl"
         />
 </LinearLayout>

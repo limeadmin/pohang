@@ -115,7 +115,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
          */
 
         Intent popupIntent = new Intent(this, com.example.pg.phlira_app.msg.MsgPopup.class)
-                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 .putExtra("num",num)
                 .putExtra("msg",msg)
                 .putExtra("appchk",appCheck);
