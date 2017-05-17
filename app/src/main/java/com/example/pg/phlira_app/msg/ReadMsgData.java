@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.pg.phlira_app.R;
 import com.example.pg.phlira_app.inc.SendHttpData;
 import com.example.pg.phlira_app.inc.SettingVar;
+import com.example.pg.phlira_app.inc.WebImgLoad;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,6 +36,7 @@ public class ReadMsgData extends Activity{
     TextView readSub;
     TextView readDate;
     TextView readContent;
+    TextView rTxt1,rTxt2;
 
     String myJSON;
     JSONArray peoples = null;
@@ -50,11 +52,16 @@ public class ReadMsgData extends Activity{
         readSub = (TextView)findViewById(R.id.read_sub);
         readDate = (TextView)findViewById(R.id.read_date);
         readContent = (TextView)findViewById(R.id.read_content);
+        rTxt1 = (TextView)findViewById(R.id.rtxt1);
+        rTxt2 = (TextView)findViewById(R.id.rtxt2);
+
         //readContent.setMovementMethod(new ScrollingMovementMethod());
         Typeface face = Typeface.createFromAsset(getAssets(), SettingVar.FONT_FILE);
         readSub.setTypeface(face);
         readDate.setTypeface(face);
         readContent.setTypeface(face);
+        rTxt1.setTypeface(face);
+        rTxt2.setTypeface(face);
 
         msgImg = (ImageView)findViewById(R.id.msg_img);
 
@@ -91,29 +98,8 @@ public class ReadMsgData extends Activity{
                 //  반드시 메인 스레드가 아닌 별도의 작업 스레드에서 작업해야 합니다.
 
                 final String imgPath = SettingVar.MSG_IMG_PATH+cont[5];
-                Thread mThread = new Thread() {
-
-                    @Override
-                    public void run() {
-
-                        try {
-                            URL url = new URL(imgPath); // URL 주소를 이용해서 URL 객체 생성
-
-                            //  아래 코드는 웹에서 이미지를 가져온 뒤
-                            //  이미지 뷰에 지정할 Bitmap을 생성하는 과정
-
-                            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-                            conn.setDoInput(true);
-                            conn.connect();
-
-                            InputStream is = conn.getInputStream();
-                            bitmap = BitmapFactory.decodeStream(is);
-
-                        } catch(IOException ex) {
-
-                        }
-                    }
-                };
+                //웹서버에서 이미지 불러오는 클라스
+                WebImgLoad mThread = new WebImgLoad(imgPath);
 
                 mThread.start(); // 웹에서 이미지를 가져오는 작업 스레드 실행.
 
@@ -127,8 +113,10 @@ public class ReadMsgData extends Activity{
 
                     //  이제 작업 스레드에서 이미지를 불러오는 작업을 완료했기에
                     //  UI 작업을 할 수 있는 메인스레드에서 이미지뷰에 이미지를 지정합니다.
-
-                    msgImg.setImageBitmap(bitmap);
+                    bitmap = mThread.getBitmap();
+                    if(bitmap != null){
+                        msgImg.setImageBitmap(bitmap);
+                    }
                 } catch (InterruptedException e) {
 
                 }

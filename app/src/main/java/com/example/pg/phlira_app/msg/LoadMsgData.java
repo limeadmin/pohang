@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -206,5 +207,17 @@ public class LoadMsgData extends Activity implements View.OnClickListener{
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("sbg_test","RESUME");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("sbg_test","PAUSE");
     }
 }

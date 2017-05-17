@@ -43,7 +43,6 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     private SendMassgeHandler mMainHandler = null;
     CountDownTimer mCountDown = null;
     boolean appCheck = true;
-    int notifiId = 0;
     NotificationManager notificationManager;
 
     @Override
@@ -70,10 +69,10 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             //mMainHandler.sendEmptyMessage(SettingVar.TOAST_POPUP);
 
             //새로운 Activity 로 팝업창을 띄움
-            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"),notifiId);
+            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
         }else {
             //새로운 Activity 로 팝업창을 띄움
-            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"),notifiId);
+            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
         }
         sendNotification(remoteMessage.getData().get("message"),remoteMessage.getData().get("num"));
 
@@ -112,7 +111,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
     };
 
-    public void MsgPopupAct(String num,String msg,int notiId){
+    public void MsgPopupAct(String num,String msg){
         /**
          * 2017_05_16
          * 작성자 : 서봉교
@@ -123,7 +122,6 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 .putExtra("num",num)
                 .putExtra("msg",msg)
-                .putExtra("noid",notiId)
                 .putExtra("appchk",appCheck);
 
         startActivity(popupIntent);
@@ -209,8 +207,8 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         */
 
 
-        notifiId = 2727;
-        notificationManager.notify(notifiId, notificationBuilder.build());
+
+        notificationManager.notify(0 /* ID */, notificationBuilder.build());
     }
 
     boolean getRunActivity(){
