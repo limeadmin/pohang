@@ -2,6 +2,7 @@ package com.example.pg.phlira_app.fcm;
 
 
 import android.app.ActivityManager;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -30,6 +31,10 @@ import com.example.pg.phlira_app.msg.ReadMsgData;
 import com.google.firebase.messaging.RemoteMessage;
 import android.os.CountDownTimer;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 /**
@@ -43,14 +48,19 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     private SendMassgeHandler mMainHandler = null;
     CountDownTimer mCountDown = null;
     boolean appCheck = true;
-    NotificationManager notificationManager;
+
+    boolean alamPopup = true;
+    boolean alamSound = true;
+    boolean alamVibrate = true;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mMainHandler = new SendMassgeHandler();
-        notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+
+
     }
 
     // [START receive_message]
@@ -63,6 +73,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         //앱이 실행중인지 아닌지 체크
         appCheck = getRunActivity();
+
 
         if(isScreenOn) {
             //Toast가 스레드라 핸들러를 통해 실행해야됨
@@ -172,22 +183,22 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher2)
-                .setContentTitle("FCM Push Test")
+                .setContentTitle(SettingVar.MAIN_TITLE)
                 .setContentText(messageBody)
+                // 알림 터치시 반응 후 알림 삭제 여부.
                 .setAutoCancel(true)
-                .setSound(defaultSoundUri)
+                //.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)
+                // 알림이 출력될 때 상단에 나오는 문구.
+                //.setTicker("미리보기 입니다.")
+                // 알림 터치시 반응
                 .setContentIntent(pendingIntent);
 
-        /*
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("FCM Push Test")
-                .setContentText(messageBody)
-                .setAutoCancel(true)
-                .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent);
 
-        아이콘이나 제목을 수정해 줄 수 있다.
-        */
+        notificationBuilder.setSound(defaultSoundUri);
+        notificationBuilder.setVibrate(new long[]{0,2000});
+
+        notificationBuilder.setLights(0xff00ff00,100,2000);
+
 
         /*
 
@@ -206,8 +217,8 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         Notification.FLAG_SHOW_LIGHTS : LED 불빛을 출력하는 플래그
         */
 
-
-
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0 /* ID */, notificationBuilder.build());
     }
 
@@ -227,6 +238,39 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             }
         }
         return false;
+    }
+
+    public void FileLoad(){
+        /**
+         * 2017-05-19
+         * 작성자 : 서봉교
+         * 설정값을 읽어옴
+         */
+        String dirPath = getFilesDir().getAbsolutePath();
+        String loadPath = dirPath+"/"+"option_set.txt";
+        File files = new File(loadPath);
+
+        if(files.exists()) {
+            try {
+                FileInputStream fis = new FileInputStream(loadPath);
+                BufferedReader bufferReader = new BufferedReader(new InputStreamReader(fis));
+                String temp = "";
+
+                int count = 0;
+                while ((temp = bufferReader.readLine()) != null) {
+                    //if(count == 0) rId = temp.replaceAll(" ", "");
+                    //if(count == 1) rLicense = temp.replaceAll(" ", "");
+                    count = count + 1;
+                }
+
+
+            } catch (Exception e) {
+                Log.d("sbg_test", "설정 파일 읽기 에러 : " + e.getMessage().toString());
+            }
+        }else{
+            Log.d("sbg_test", "설정 파일 없음");
+
+        }
     }
 
 }

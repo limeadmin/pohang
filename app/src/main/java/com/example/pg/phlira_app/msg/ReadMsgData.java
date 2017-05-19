@@ -1,11 +1,10 @@
 package com.example.pg.phlira_app.msg;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
-import android.os.AsyncTask;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
@@ -15,16 +14,10 @@ import com.example.pg.phlira_app.R;
 import com.example.pg.phlira_app.inc.SendHttpData;
 import com.example.pg.phlira_app.inc.SettingVar;
 import com.example.pg.phlira_app.inc.WebImgLoad;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 /**
  * Created by pg on 2017-05-08.
@@ -36,7 +29,6 @@ public class ReadMsgData extends Activity{
     TextView readSub;
     TextView readDate;
     TextView readContent;
-    TextView rTxt1,rTxt2;
 
     String myJSON;
     JSONArray peoples = null;
@@ -52,16 +44,8 @@ public class ReadMsgData extends Activity{
         readSub = (TextView)findViewById(R.id.read_sub);
         readDate = (TextView)findViewById(R.id.read_date);
         readContent = (TextView)findViewById(R.id.read_content);
-        rTxt1 = (TextView)findViewById(R.id.rtxt1);
-        rTxt2 = (TextView)findViewById(R.id.rtxt2);
 
         //readContent.setMovementMethod(new ScrollingMovementMethod());
-        Typeface face = Typeface.createFromAsset(getAssets(), SettingVar.FONT_FILE);
-        readSub.setTypeface(face);
-        readDate.setTypeface(face);
-        readContent.setTypeface(face);
-        rTxt1.setTypeface(face);
-        rTxt2.setTypeface(face);
 
         msgImg = (ImageView)findViewById(R.id.msg_img);
 
@@ -142,4 +126,10 @@ public class ReadMsgData extends Activity{
         }
         return super.onKeyDown(keyCode, event);
     }*/
+
+    //폰트일괄적용
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 }

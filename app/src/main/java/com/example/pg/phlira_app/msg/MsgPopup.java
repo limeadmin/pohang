@@ -1,12 +1,11 @@
 package com.example.pg.phlira_app.msg;
 
 import android.app.Activity;
-import android.app.NotificationManager;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,19 +14,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.pg.phlira_app.IntroPage;
 import com.example.pg.phlira_app.MainActivity;
 import com.example.pg.phlira_app.R;
 import com.example.pg.phlira_app.inc.SettingVar;
 import com.example.pg.phlira_app.inc.WebImgLoad;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -72,12 +67,6 @@ public class MsgPopup extends Activity implements View.OnClickListener{
         tBtn = (Button)findViewById(R.id.t_btn);
         tBtn2 = (Button)findViewById(R.id.t_btn2);
         adImg = (ImageView)findViewById(R.id.ad_img);
-
-        Typeface face = Typeface.createFromAsset(getAssets(), SettingVar.FONT_FILE);
-        tv.setTypeface(face);
-        tv2.setTypeface(face);
-        tBtn.setTypeface(face);
-        tBtn2.setTypeface(face);
 
         Intent intent = getIntent();
         //true 이면 앱이 실행중에 푸시 알림창이 뜬경우, false 이면 앱이 완전 종료된 상태에 푸시 알림창이 뜬경우
@@ -148,12 +137,16 @@ public class MsgPopup extends Activity implements View.OnClickListener{
 
         super.onPause();
 
-        finish();
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    //폰트일괄적용
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 }

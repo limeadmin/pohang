@@ -5,4 +5,13 @@
     <string name="content">내 용</string>
     <string name="loading">로딩중...</string>
     <string name="reg_notice">※ 인증 후 사용 가능합니다.</string>
+    <string name="msg_list">메세지 리스트</string>
+    <string name="option">설 정</string>
+    <string name="msg_read">메세지 확인</string>
+    <string name="msg_alam">메세지 알림 설정</string>
+    <string name="msg_sound">알림 사운드 설정</string>
+    <string name="msg_vibrate">알림 진동 설정</string>
+    <string name="switch_on">켜 기</string>
+    <string name="switch_off">끄 기</string>
+
 </resources>

@@ -2,9 +2,10 @@ package com.example.pg.phlira_app.msg;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.graphics.Typeface;
-import android.os.AsyncTask;
+import android.content.Context;
+
 import android.os.Bundle;
+import android.support.annotation.IntDef;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,18 +18,18 @@ import com.example.pg.phlira_app.R;
 import com.example.pg.phlira_app.inc.MsgCustomAdapter;
 import com.example.pg.phlira_app.inc.SendHttpData;
 import com.example.pg.phlira_app.inc.SettingVar;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 /**
  * Created by pg on 2017-05-02.
@@ -46,16 +47,22 @@ public class LoadMsgData extends Activity implements View.OnClickListener{
     Button sdateBtn;
     Button edateBtn;
     Button msgSearch;
+
     int sYear,sMonth,sDay,sHour,sMinute;
     int eYear,eMonth,eDay,eHour,eMinute;
     SendHttpData sendData = new SendHttpData(this);
 
+    //날짜 검색시 날짜 포맷용
+    Calendar sDate;
+    Calendar eDate;
 
     //메세지를 읽어옴
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.msg_view_page);
+
+        //메세지 리스트 불러오기
         sendData.getData(SettingVar.MSG_LOAD_SERVER_FILE+"?id="+SettingVar.id,"mls");
 
         listview = (ListView)findViewById(R.id.listview);
@@ -81,13 +88,12 @@ public class LoadMsgData extends Activity implements View.OnClickListener{
         eDay = cal.get(Calendar.DAY_OF_MONTH);
         eHour = cal.get(Calendar.HOUR_OF_DAY);
         eMinute = cal.get(Calendar.MINUTE);
-        Typeface face = Typeface.createFromAsset(getAssets(), SettingVar.FONT_FILE);
-        sdateBtn.setTypeface(face);
-        edateBtn.setTypeface(face);
-        msgSearch.setTypeface(face);
 
+        //날짜로 검색시 날짜 포맷용
+        sDate = Calendar.getInstance();
+        eDate = Calendar.getInstance();
 
-        UpdateNow();
+        //UpdateNow();
     }
     
     public void onClick(View v){
@@ -99,7 +105,16 @@ public class LoadMsgData extends Activity implements View.OnClickListener{
                 new DatePickerDialog(LoadMsgData.this, eDateSetListener, eYear,eMonth, eDay).show();
                 break;
             case R.id.msg_search:
-                Toast.makeText(this, sdateBtn.getText()+" ~ "+edateBtn.getText(), Toast.LENGTH_SHORT).show();
+                //메세지 리스트 불러오기
+
+                sDate.set(sYear,sMonth,sDay);
+                eDate.set(eYear,eMonth,eDay);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+                sendData.getData(SettingVar.MSG_LOAD_SERVER_FILE+"?id="+SettingVar.id+"&sdate="+sdf.format(sDate.getTime()).toString()+"&edate="+sdf.format(eDate.getTime()).toString(),"mls");
+                Log.d("sbg_test",sdf.format(sDate.getTime()).toString()+"--"+sdf.format(eDate.getTime()).toString());
+
                 break;
 
         }
@@ -114,6 +129,7 @@ public class LoadMsgData extends Activity implements View.OnClickListener{
         try {
             JSONObject jsonObj = new JSONObject(myJSON);
             peoples = jsonObj.getJSONArray(SettingVar.TAG_RESULTS);
+            adapter = null;
             adapter = new MsgCustomAdapter();
             listview.setAdapter(adapter);
 
@@ -132,7 +148,6 @@ public class LoadMsgData extends Activity implements View.OnClickListener{
 
                 adapter.add(cont);
             }
-
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -212,12 +227,18 @@ public class LoadMsgData extends Activity implements View.OnClickListener{
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("sbg_test","RESUME");
+        //Log.d("sbg_test","RESUME");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("sbg_test","PAUSE");
+        //Log.d("sbg_test","PAUSE");
+    }
+
+    //폰트일괄적용
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 }

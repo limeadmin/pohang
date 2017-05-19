@@ -7,17 +7,39 @@
     android:orientation="vertical"
     android:background="@color/white"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sky1"
+        android:layout_marginBottom="6dp"
+        >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:text="@string/msg_list"
+            android:padding="14dp"
+            android:id="@+id/msg_title"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
     <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="50dp"
+      android:layout_height="48dp"
+      android:paddingBottom="2dp"
+      android:gravity="center"
         >
         <Button
             android:id="@+id/sdate_btn"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="시작날짜"
+            android:text="날짜범위"
             android:layout_gravity="center"
+            android:background="@color/gray3"
+            android:textColor="@color/black2"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -30,8 +52,10 @@
             android:id="@+id/edate_btn"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="마지막날짜"
+            android:text="날짜범위"
             android:layout_gravity="center"
+            android:background="@color/gray3"
+            android:textColor="@color/black2"
             />
         <Button
             android:id="@+id/msg_search"
@@ -39,6 +63,9 @@
             android:layout_height="40dp"
             android:text="검 색"
             android:layout_gravity="center"
+            android:background="@color/gray3"
+            android:textColor="@color/black2"
+            android:layout_marginLeft="12dp"
             />
   </LinearLayout>
 

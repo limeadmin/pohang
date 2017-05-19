@@ -4,14 +4,17 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#ffffff</color>
+    <color name="white1">#efefef</color>
     <color name="black">#000000</color>
-    <color name="mback">#dce0df</color>
-    <color name="gray1">#c8c8c8</color>
     <color name="pblack">#15000000</color>
     <color name="black2">#5a595b</color>
+    <color name="gray1">#c8c8c8</color>
+    <color name="gray2">#f6f6f6</color>
+    <color name="gray3">#f1f1f1</color>
+    <color name="mback">#dce0df</color>
     <color name="blue1">#91c5ee</color>
     <color name="tblue1">#5091c5ee</color>
-    <color name="red">#f5072e</color>
-    <color name="white1">#efefef</color>
     <color name="blue2">#1548a3</color>
+    <color name="sky1">#4eafd0</color>
+    <color name="red">#f5072e</color>
 </resources>

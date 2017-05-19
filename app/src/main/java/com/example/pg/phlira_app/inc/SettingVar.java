@@ -8,6 +8,8 @@ package com.example.pg.phlira_app.inc;
  */
 
 public class SettingVar {
+    public static final String MAIN_TITLE = "포항지역건축사회";
+
     //메인 도메인 설정
     private static final String MAIN_DOMAIN = "http://www.phkira.or.kr";
     //모바일 홈페이지 세션 셋팅
@@ -60,4 +62,10 @@ public class SettingVar {
     public static final String MSG_DB_WDATE = "wdate";
     //메세지 리스트 로드시 읽음 유무 체크
     public static final String MSG_CONFIRM = "mconf";
+
+
+    //옵션설정 항목들
+    public static boolean ALAM_POPUP = true;
+    public static boolean ALAM_SOUND = true;
+    public static boolean ALAM_VIBRATE = true;
 }

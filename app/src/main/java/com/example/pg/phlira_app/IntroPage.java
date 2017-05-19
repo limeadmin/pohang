@@ -2,8 +2,8 @@ package com.example.pg.phlira_app;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.pg.phlira_app.inc.SettingVar;
 import com.example.pg.phlira_app.inc.SendHttpData;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -69,11 +70,7 @@ public class IntroPage extends Activity implements View.OnClickListener{
         inputTag = (LinearLayout)findViewById(R.id.input_tag);
         alertTxt = (TextView)findViewById(R.id.alert_txt);
         regBtn.setOnClickListener(this);
-        Typeface face = Typeface.createFromAsset(getAssets(), SettingVar.FONT_FILE);
 
-        regId.setTypeface(face);
-        regLicense.setTypeface(face);
-        alertTxt.setTypeface(face);
 
         Intent intent = getIntent();
         SettingVar.moveMsg = intent.getStringExtra("num");
@@ -248,6 +245,12 @@ public class IntroPage extends Activity implements View.OnClickListener{
         startActivity(i);
         finish();
         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+    }
+
+    //폰트일괄적용
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 
 }
