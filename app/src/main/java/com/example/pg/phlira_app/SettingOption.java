@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
 
 
 import com.example.pg.phlira_app.inc.SettingVar;
@@ -22,14 +25,44 @@ import java.io.InputStreamReader;
  * 옵션설정 페이지
  */
 
-public class SettingOption extends Activity{
+public class SettingOption extends Activity implements CompoundButton.OnCheckedChangeListener{
 
-
+    Switch alamSwitch,soundSwitch,vibrateSwitch;
+    boolean switchLoadCheck = false;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_option);
 
+        alamSwitch = (Switch)findViewById(R.id.alam_switch);
+        soundSwitch = (Switch)findViewById(R.id.sound_switch);
+        vibrateSwitch = (Switch)findViewById(R.id.vibrate_switch);
+
+        alamSwitch.setOnCheckedChangeListener(this);
+        soundSwitch.setOnCheckedChangeListener(this);
+        vibrateSwitch.setOnCheckedChangeListener(this);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch(buttonView.getId()){
+            case R.id.alam_switch:
+
+                SettingVar.ALAM_POPUP = isChecked;
+                if(switchLoadCheck){ FileMake(); }
+                Log.d("sbg_test","알람설정 : "+isChecked);
+                break;
+            case R.id.sound_switch:
+                SettingVar.ALAM_SOUND = isChecked;
+                if(switchLoadCheck){ FileMake(); }
+                Log.d("sbg_test","사운드설정 : "+isChecked);
+                break;
+            case R.id.vibrate_switch:
+                SettingVar.ALAM_VIBRATE = isChecked;
+                if(switchLoadCheck){ FileMake(); }
+                Log.d("sbg_test","진동설정 : "+isChecked);
+                break;
+        }
     }
 
     //폰트일괄적용
@@ -37,6 +70,7 @@ public class SettingOption extends Activity{
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
+
 
     public void FileLoad(){
         /**
@@ -55,19 +89,28 @@ public class SettingOption extends Activity{
                 String temp = "";
 
                 int count = 0;
+
                 while ((temp = bufferReader.readLine()) != null) {
-                    //if(count == 0) rId = temp.replaceAll(" ", "");
-                    //if(count == 1) rLicense = temp.replaceAll(" ", "");
+                    if(count == 0) SettingVar.ALAM_POPUP = Boolean.valueOf(temp.replaceAll(" ", "")).booleanValue();
+                    if(count == 1) SettingVar.ALAM_SOUND = Boolean.valueOf(temp.replaceAll(" ", "")).booleanValue();
+                    if(count == 2) SettingVar.ALAM_VIBRATE = Boolean.valueOf(temp.replaceAll(" ", "")).booleanValue();
                     count = count + 1;
+
                 }
+                Log.d("sbg_test","설정파일 카운트 : "+count);
 
+                alamSwitch.setChecked(SettingVar.ALAM_POPUP);
+                soundSwitch.setChecked(SettingVar.ALAM_SOUND);
+                vibrateSwitch.setChecked(SettingVar.ALAM_VIBRATE);
 
+                switchLoadCheck = true;
             } catch (Exception e) {
                 Log.d("sbg_test", "설정 파일 읽기 에러 : " + e.getMessage().toString());
+                Toast.makeText(this, "설정파일 읽기 실패~~~!", Toast.LENGTH_LONG).show();
             }
         }else{
             Log.d("sbg_test", "설정 파일 없음");
-
+            FileMake();
         }
     }
 
@@ -89,7 +132,7 @@ public class SettingOption extends Activity{
         }
 
         // txt 파일 생성
-        String testStr = "11"+ "\n" + "22";
+        String testStr = SettingVar.ALAM_POPUP+ "\n" + SettingVar.ALAM_SOUND + "\n" + SettingVar.ALAM_VIBRATE;
         File savefile = new File(dirPath+"/option_set.txt");
 
         try{
@@ -106,6 +149,8 @@ public class SettingOption extends Activity{
     @Override
     protected void onResume() {
         super.onResume();
+        switchLoadCheck = false;
+        FileLoad();
         Log.d("sbg_test","옵션설정 : RESUMT");
     }
 

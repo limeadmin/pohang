@@ -1,12 +1,15 @@
 package com.example.pg.phlira_app.msg;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +21,8 @@ import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.List;
 
 /**
  * Created by pg on 2017-05-08.
@@ -117,7 +122,7 @@ public class ReadMsgData extends Activity{
     }
 
     //백버튼 클릭시 에니메이션 효과 주기
-    /*
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             this.finish();
@@ -125,7 +130,8 @@ public class ReadMsgData extends Activity{
             return true;
         }
         return super.onKeyDown(keyCode, event);
-    }*/
+    }
+
 
     //폰트일괄적용
     @Override

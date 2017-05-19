@@ -49,23 +49,17 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     CountDownTimer mCountDown = null;
     boolean appCheck = true;
 
-    boolean alamPopup = true;
-    boolean alamSound = true;
-    boolean alamVibrate = true;
-
     @Override
     public void onCreate() {
         super.onCreate();
         mMainHandler = new SendMassgeHandler();
-
-
-
-
     }
 
     // [START receive_message]
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+
+        FileLoad();
 
         //화면이 꺼져 있는지 체크 true : 켜짐, false : 꺼짐
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
@@ -74,16 +68,19 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         //앱이 실행중인지 아닌지 체크
         appCheck = getRunActivity();
 
+        //알람 설정
+        if(SettingVar.ALAM_POPUP){
+            if(isScreenOn) {
+                //Toast가 스레드라 핸들러를 통해 실행해야됨
+                //mMainHandler.sendEmptyMessage(SettingVar.TOAST_POPUP);
 
-        if(isScreenOn) {
-            //Toast가 스레드라 핸들러를 통해 실행해야됨
-            //mMainHandler.sendEmptyMessage(SettingVar.TOAST_POPUP);
+                //새로운 Activity 로 팝업창을 띄움
+                MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
+            }else {
+                //새로운 Activity 로 팝업창을 띄움
+                MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
+            }
 
-            //새로운 Activity 로 팝업창을 띄움
-            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
-        }else {
-            //새로운 Activity 로 팝업창을 띄움
-            MsgPopupAct(remoteMessage.getData().get("num"),remoteMessage.getData().get("message"));
         }
         sendNotification(remoteMessage.getData().get("message"),remoteMessage.getData().get("num"));
 
@@ -164,13 +161,12 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         Intent intent;
 
         //앱이 실행중일때와 앱이 종료되었을때 알림창 클릭시 실행되는 액티비티 설정
-        intent = new Intent(this, IntroPage.class);
 
-        /*if(appCheck){
+        if(appCheck){
             intent = new Intent(this, ReadMsgData.class);
         }else{
             intent = new Intent(this, IntroPage.class);
-        }*/
+        }
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("num",num);
@@ -189,17 +185,14 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                 .setAutoCancel(true)
                 //.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)
                 // 알림이 출력될 때 상단에 나오는 문구.
-                //.setTicker("미리보기 입니다.")
+                .setTicker(SettingVar.MAIN_TITLE)
                 // 알림 터치시 반응
                 .setContentIntent(pendingIntent);
 
-
-        notificationBuilder.setSound(defaultSoundUri);
-        notificationBuilder.setVibrate(new long[]{0,2000});
+        if(SettingVar.ALAM_SOUND){ notificationBuilder.setSound(defaultSoundUri); }
+        if(SettingVar.ALAM_VIBRATE){ notificationBuilder.setVibrate(new long[]{0,2000}); }
 
         notificationBuilder.setLights(0xff00ff00,100,2000);
-
-
         /*
 
 
@@ -258,8 +251,9 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
                 int count = 0;
                 while ((temp = bufferReader.readLine()) != null) {
-                    //if(count == 0) rId = temp.replaceAll(" ", "");
-                    //if(count == 1) rLicense = temp.replaceAll(" ", "");
+                    if(count == 0) SettingVar.ALAM_POPUP = Boolean.valueOf(temp.replaceAll(" ", "")).booleanValue();
+                    if(count == 1) SettingVar.ALAM_SOUND = Boolean.valueOf(temp.replaceAll(" ", "")).booleanValue();
+                    if(count == 2) SettingVar.ALAM_VIBRATE = Boolean.valueOf(temp.replaceAll(" ", "")).booleanValue();
                     count = count + 1;
                 }
 
