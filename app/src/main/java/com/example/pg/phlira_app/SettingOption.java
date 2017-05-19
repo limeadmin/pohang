@@ -104,8 +104,14 @@ public class SettingOption extends Activity{
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("sbg_test","옵션설정 : RESUMT");
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
-        Log.d("sbg_test","옵션설정 : PAUSE");
+
     }
 }

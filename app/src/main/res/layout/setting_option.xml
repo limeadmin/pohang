@@ -66,21 +66,26 @@
                     android:layout_height="wrap_content"
                     android:text="꺼짐"
                     android:textColor="@color/gray1"
+                    android:textSize="12sp"
                     />
                 <Switch
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:track="@drawable/switch_track_select"
                     android:thumb="@drawable/switch_thumb_select"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
                     android:id="@+id/alam_switch"
+                    android:text=""
+                    android:textOn=""
+                    android:textOff=""
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="켜짐"
                     android:textColor="@color/sky1"
+                    android:textSize="12sp"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -121,21 +126,26 @@
                     android:layout_height="wrap_content"
                     android:text="꺼짐"
                     android:textColor="@color/gray1"
+                    android:textSize="12sp"
                     />
                 <Switch
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:track="@drawable/switch_track_select"
                     android:thumb="@drawable/switch_thumb_select"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
                     android:id="@+id/sound_switch"
+                    android:text=""
+                    android:textOn=""
+                    android:textOff=""
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="켜짐"
                     android:textColor="@color/sky1"
+                    android:textSize="12sp"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -176,14 +186,15 @@
                     android:layout_height="wrap_content"
                     android:text="꺼짐"
                     android:textColor="@color/gray1"
+                    android:textSize="12sp"
                     />
                 <Switch
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:track="@drawable/switch_track_select"
                     android:thumb="@drawable/switch_thumb_select"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
                     android:id="@+id/vibrate_switch"
                     android:text=""
                     android:textOn=""
@@ -194,6 +205,7 @@
                     android:layout_height="wrap_content"
                     android:text="켜짐"
                     android:textColor="@color/sky1"
+                    android:textSize="12sp"
                     />
             </LinearLayout>
         </LinearLayout>
