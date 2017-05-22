@@ -54,7 +54,8 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         mWeb.setWebViewClient(new MyWebClient());
         WebSettings set = mWeb.getSettings();
         set.setJavaScriptEnabled(true);
-        set.setBuiltInZoomControls(false);
+        set.setBuiltInZoomControls(true);
+        set.setSupportZoom(true);
         mWeb.setVerticalScrollBarEnabled(true);
         mWeb.setHorizontalScrollBarEnabled(false);
         mWeb.clearCache(true);
@@ -62,6 +63,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         mWeb.getSettings().setUseWideViewPort(true);
         mWeb.getSettings().setLoadWithOverviewMode(true);
         mWeb.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+
 
         //처음 메인페이지 접속은 세션 셋팅 페이지로 설정
         //세션값들을 설정한다

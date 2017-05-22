@@ -29,7 +29,8 @@ public class SettingVar {
     //인증후 회원정보를 fcm DB에 저장 및 중복값 삭제
     public static final String CHECK_FCM_DB = MAIN_DOMAIN + "/sbg_fcm/check_fcm_db.php";
     //건축설계노트 주소
-    public static final String ARC_NOTE_URL = "http://tmiweb.kr/ph/index.html";
+    //public static final String ARC_NOTE_URL = "http://tmiweb.kr/ph/index.html";
+    public static final String ARC_NOTE_URL = MAIN_DOMAIN + "/main/intro.php";
     //광고이미지 경로
     public static final String AD_IMG_PATH = MAIN_DOMAIN + "/sbg_fcm/adimg/pohang/ad_img.jpg";
 

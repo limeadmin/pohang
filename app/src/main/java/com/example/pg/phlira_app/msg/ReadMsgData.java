@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.pg.phlira_app.BaseActivity;
 import com.example.pg.phlira_app.R;
 import com.example.pg.phlira_app.inc.SendHttpData;
 import com.example.pg.phlira_app.inc.SettingVar;
@@ -137,5 +138,16 @@ public class ReadMsgData extends Activity{
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(SettingVar.id.equals("")){
+
+            finish();
+
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
     }
 }
