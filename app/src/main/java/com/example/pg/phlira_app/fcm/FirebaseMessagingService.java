@@ -167,11 +167,16 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         }else{
             intent = new Intent(this, IntroPage.class);
         }
+        //Log.d("sbg_test","넘오온 num 값 : "+num);
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("num",num);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+        //여러개의 notifi가 생성되었을때 가장 처음 생성된 notifi의 값만 (num값)적용되는 문제 해결
+        //PendingIntent에 Request code 값을 주면 됨(고유아이디 개념)
+        int rc = Integer.parseInt(num);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,rc /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

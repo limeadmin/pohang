@@ -58,6 +58,8 @@ public class ReadMsgData extends Activity{
         Intent intent = getIntent();
         String num = intent.getStringExtra("num");
 
+        //Log.d("sbg_test","받은 num 값 : "+num);
+
         sendData.getData(SettingVar.READ_MSG_SERVER_FILE+"?num="+num+"&id="+SettingVar.id,"rmsf");
     }
 
