@@ -13,5 +13,5 @@
     <string name="msg_vibrate">알림 진동 설정</string>
     <string name="switch_on">켜 기</string>
     <string name="switch_off">끄 기</string>
-
+    <string name="btn_height">56dp</string>
 </resources>

@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/switch_thumb_off"
+        android:state_checked="false"/>
 
-    <size
-        android:width="25dp"
-        android:height="25dp" />
+    <item
+        android:drawable="@drawable/switch_thumb_onxml"
+        android:state_checked="true"/>
 
-    <solid
-        android:color="#f9f9dd" />
-
-    <stroke
-        android:width="0.1dp"
-        android:color="#666666" />
-
-
-
-</shape>
+</selector>

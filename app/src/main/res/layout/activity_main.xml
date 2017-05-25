@@ -28,7 +28,7 @@
         >
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:id="@+id/btnback"
             android:src="@drawable/press_btn_back"
@@ -36,7 +36,7 @@
             />
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:id="@+id/btnforward"
             android:src="@drawable/press_btn_forward"
@@ -44,7 +44,7 @@
             />
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:id="@+id/btnhome"
             android:src="@drawable/press_btn_home"
@@ -52,7 +52,7 @@
             />
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:id="@+id/btnmsg"
             android:src="@drawable/press_btn_msg"
@@ -60,7 +60,7 @@
             />
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:id="@+id/btnreload"
             android:src="@drawable/press_btn_reload"
@@ -68,7 +68,7 @@
             />
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:id="@+id/btnset"
             android:src="@drawable/press_btn_set"
