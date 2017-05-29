@@ -124,7 +124,6 @@ public class IntroPage extends Activity implements View.OnClickListener{
                     Toast.makeText(this, "아이디을 입력해 주십시오.", Toast.LENGTH_SHORT).show();
                     regId.setText("");
                     regId.requestFocus();
-
                     //키보드 보이게 하는 부분
                     InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
