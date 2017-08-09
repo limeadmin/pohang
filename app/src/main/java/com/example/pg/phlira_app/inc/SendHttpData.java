@@ -36,6 +36,7 @@ public class SendHttpData {
 
                 String uri = params[0];
 
+
                 BufferedReader bufferedReader = null;
                 try {
                     URL url = new URL(uri);
