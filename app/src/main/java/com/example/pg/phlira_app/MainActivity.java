@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -64,6 +66,16 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         mWeb.getSettings().setUseWideViewPort(true);
         mWeb.getSettings().setLoadWithOverviewMode(true);
         mWeb.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+
+        //웹뷰에서 javascript의 alert창을 쓰기위해 아래코드가 추가되어야됨
+        mWeb.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                return super.onJsAlert(view, url, message, result);
+            }
+        });
+        mWeb.setWebViewClient(new WebViewClient());
+
 
         //<a href='tel:010-0101-0202'></a> 형식으로 전화걸기를 가능하게 함
         //<uses-permission android:name="android.permission.CALL_PHONE"/> 권한도 줘야됨
