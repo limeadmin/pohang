@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
@@ -74,24 +75,9 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 return super.onJsAlert(view, url, message, result);
             }
         });
-        mWeb.setWebViewClient(new WebViewClient());
+        //mWeb.setWebViewClient(new WebViewClient());
 
 
-        //<a href='tel:010-0101-0202'></a> 형식으로 전화걸기를 가능하게 함
-        //<uses-permission android:name="android.permission.CALL_PHONE"/> 권한도 줘야됨
-        mWeb.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if(url.startsWith("tel:")){
-                    Intent dial = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    //현재의 activity 에 대하여 startActivity 호출
-                    startActivity(dial);
-                    return true;
-                }
-                view.loadUrl(url);
-                return true;
-            }
-        });
 
 
         //처음 메인페이지 접속은 세션 셋팅 페이지로 설정
@@ -179,14 +165,36 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
     }
 
     private class MyWebClient extends WebViewClient {
-        public boolean shouldOverriderUrlLoading(WebView view, String url) {
+        /*public boolean shouldOverriderUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }*/
+
+        //웹뷰에서 페이지가 로딩 시작시 실행
+        public void onPageStarted(WebView view, String url,Bitmap favicon){
+
+        }
+
+        //<a href='tel:010-0101-0202'></a> 형식으로 전화걸기를 가능하게 함
+        //<uses-permission android:name="android.permission.CALL_PHONE"/> 권한도 줘야됨
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if(url.startsWith("tel:")){
+                Intent dial = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                //현재의 activity 에 대하여 startActivity 호출
+                startActivity(dial);
+                return true;
+            }
             view.loadUrl(url);
             return true;
         }
 
+        //
         @Override
         public void onPageFinished(WebView view, String url) {
             // WebView의 페이지 로드가 완료되면 콜백의 형태로 이 메쏘드가 호출됩니다..
+            Log.d("sbg_test","url : " + view.getUrl());
+
             if(view.getUrl().equals(SettingVar.ARC_NOTE_URL)){
                 //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 //Log.d("sbg_test","가로 화면 : " + view.getUrl());
