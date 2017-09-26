@@ -189,11 +189,19 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
             return true;
         }
 
-        //
+        boolean tChk = false;
         @Override
         public void onPageFinished(WebView view, String url) {
             // WebView의 페이지 로드가 완료되면 콜백의 형태로 이 메쏘드가 호출됩니다..
-            Log.d("sbg_test","url : " + view.getUrl());
+
+            //웹에서 세션이 만료되어 alert_page로 이동할때를 감지해서
+            //재실행되게 함
+            if(view.getUrl().equals(SettingVar.ALERT_PAGE) && tChk == false){
+                Intent i = new Intent(MainActivity.this,IntroPage.class);
+                startActivity(i);
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                tChk = true;
+            }
 
             if(view.getUrl().equals(SettingVar.ARC_NOTE_URL)){
                 //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);

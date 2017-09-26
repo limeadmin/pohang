@@ -236,14 +236,20 @@ public class IntroPage extends Activity implements View.OnClickListener{
          * 작성자 : 서봉교
          * 인증값을 전역변수에 저장시키고 메인 페이지로 이동
          */
-        SettingVar.id = rId;
-        SettingVar.license = rLicense;
+        SettingVar.id =  rId.replaceAll("\\p{Z}", "");
+        SettingVar.license = rLicense.replaceAll("\\p{Z}", "");
 
-        Intent i = new Intent(IntroPage.this,MainActivity.class);
+        if(SettingVar.id != "" && SettingVar.license != ""){
+            //아이디와 라이센스 값이 있으면 메인페이지 이동
+            Intent i = new Intent(IntroPage.this,MainActivity.class);
 
-        startActivity(i);
-        finish();
-        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            startActivity(i);
+            finish();
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+        }else {
+            //아이디와 라이센스값이 없으면 실행
+        }
+
     }
 
     //폰트일괄적용

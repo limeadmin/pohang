@@ -33,6 +33,8 @@ public class SettingVar {
     public static final String ARC_NOTE_URL = MAIN_DOMAIN + "/main/intro.php";
     //광고이미지 경로
     public static final String AD_IMG_PATH = MAIN_DOMAIN + "/sbg_fcm/adimg/pohang/ad_img.jpg";
+    //알러트 페이지
+    public static final String ALERT_PAGE = MAIN_DOMAIN + "/m/alert_page.php";
 
 
     //폰트이름
