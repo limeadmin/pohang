@@ -1,16 +1,12 @@
-package com.example.pg.phlira_app;
+package com.pohang_app.pg.phlira_app;
 
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,11 +16,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-import com.example.pg.phlira_app.msg.LoadMsgData;
-import com.example.pg.phlira_app.inc.SettingVar;
-import com.example.pg.phlira_app.msg.ReadMsgData;
+import com.pohang_app.pg.phlira_app.msg.LoadMsgData;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.msg.ReadMsgData;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 

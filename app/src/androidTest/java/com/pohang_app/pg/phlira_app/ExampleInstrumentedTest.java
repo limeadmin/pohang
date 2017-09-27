@@ -1,4 +1,4 @@
-package com.example.pg.phlira_app;
+package com.pohang_app.pg.phlira_app;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

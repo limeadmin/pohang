@@ -1,4 +1,4 @@
-package com.example.pg.phlira_app.msg;
+package com.pohang_app.pg.phlira_app.msg;
 
 import android.app.Activity;
 
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,11 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.example.pg.phlira_app.IntroPage;
-import com.example.pg.phlira_app.MainActivity;
-import com.example.pg.phlira_app.R;
-import com.example.pg.phlira_app.inc.SettingVar;
-import com.example.pg.phlira_app.inc.WebImgLoad;
+import com.pohang_app.pg.phlira_app.IntroPage;
+import com.pohang_app.pg.phlira_app.MainActivity;
+import com.pohang_app.pg.phlira_app.R;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.inc.WebImgLoad;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.text.SimpleDateFormat;

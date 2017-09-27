@@ -1,10 +1,9 @@
-package com.example.pg.phlira_app.inc;
+package com.pohang_app.pg.phlira_app.inc;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pg.phlira_app.R;
-import com.example.pg.phlira_app.msg.ReadMsgData;
+import com.pohang_app.pg.phlira_app.R;
+import com.pohang_app.pg.phlira_app.msg.ReadMsgData;
 
 import java.util.ArrayList;
 

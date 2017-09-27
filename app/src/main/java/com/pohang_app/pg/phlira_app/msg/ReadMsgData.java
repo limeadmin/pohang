@@ -1,29 +1,24 @@
-package com.example.pg.phlira_app.msg;
+package com.pohang_app.pg.phlira_app.msg;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.pg.phlira_app.BaseActivity;
-import com.example.pg.phlira_app.R;
-import com.example.pg.phlira_app.inc.SendHttpData;
-import com.example.pg.phlira_app.inc.SettingVar;
-import com.example.pg.phlira_app.inc.WebImgLoad;
+import com.pohang_app.pg.phlira_app.R;
+import com.pohang_app.pg.phlira_app.inc.SendHttpData;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.inc.WebImgLoad;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.List;
 
 /**
  * Created by pg on 2017-05-08.

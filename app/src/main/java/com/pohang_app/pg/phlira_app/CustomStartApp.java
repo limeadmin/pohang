@@ -1,8 +1,8 @@
-package com.example.pg.phlira_app;
+package com.pohang_app.pg.phlira_app;
 
 import android.app.Application;
 
-import com.example.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
 import com.tsengvn.typekit.Typekit;
 
 /**

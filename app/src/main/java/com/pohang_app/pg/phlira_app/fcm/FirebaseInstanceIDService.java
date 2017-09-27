@@ -1,7 +1,5 @@
-package com.example.pg.phlira_app.fcm;
+package com.pohang_app.pg.phlira_app.fcm;
 
-import android.content.Intent;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -13,7 +11,7 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import com.example.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
 
 public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
 

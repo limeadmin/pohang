@@ -1,11 +1,11 @@
-package com.example.pg.phlira_app.inc;
+package com.pohang_app.pg.phlira_app.inc;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.example.pg.phlira_app.IntroPage;
-import com.example.pg.phlira_app.msg.LoadMsgData;
-import com.example.pg.phlira_app.msg.ReadMsgData;
+import com.pohang_app.pg.phlira_app.IntroPage;
+import com.pohang_app.pg.phlira_app.msg.LoadMsgData;
+import com.pohang_app.pg.phlira_app.msg.ReadMsgData;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

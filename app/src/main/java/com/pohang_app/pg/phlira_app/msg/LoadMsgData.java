@@ -1,35 +1,30 @@
-package com.example.pg.phlira_app.msg;
+package com.pohang_app.pg.phlira_app.msg;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 
 import android.os.Bundle;
-import android.support.annotation.IntDef;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.pg.phlira_app.R;
-import com.example.pg.phlira_app.inc.MsgCustomAdapter;
-import com.example.pg.phlira_app.inc.SendHttpData;
-import com.example.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.R;
+import com.pohang_app.pg.phlira_app.inc.MsgCustomAdapter;
+import com.pohang_app.pg.phlira_app.inc.SendHttpData;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 
 /**
  * Created by pg on 2017-05-02.

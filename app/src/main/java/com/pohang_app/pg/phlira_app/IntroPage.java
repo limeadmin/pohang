@@ -1,4 +1,4 @@
-package com.example.pg.phlira_app;
+package com.pohang_app.pg.phlira_app;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -20,8 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pg.phlira_app.inc.SettingVar;
-import com.example.pg.phlira_app.inc.SendHttpData;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.inc.SendHttpData;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.io.BufferedReader;

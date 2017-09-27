@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.example.pg.phlira_app"
+        applicationId "com.pohang_app.pg.phlira_app"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1

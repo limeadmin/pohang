@@ -1,15 +1,11 @@
-package com.example.pg.phlira_app;
+package com.pohang_app.pg.phlira_app;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.example.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
 
 /**
  * Created by lime1 on 2017-05-22.

@@ -1,4 +1,4 @@
-package com.example.pg.phlira_app;
+package com.pohang_app.pg.phlira_app;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 
-import com.example.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.io.BufferedReader;

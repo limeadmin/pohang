@@ -1,4 +1,4 @@
-package com.example.pg.phlira_app.inc;
+package com.pohang_app.pg.phlira_app.inc;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

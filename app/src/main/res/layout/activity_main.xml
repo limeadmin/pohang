@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context="com.example.pg.phlira_app.MainActivity">
+    tools:context="com.pohang_app.pg.phlira_app.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

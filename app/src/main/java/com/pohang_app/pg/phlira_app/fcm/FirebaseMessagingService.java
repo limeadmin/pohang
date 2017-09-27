@@ -1,8 +1,7 @@
-package com.example.pg.phlira_app.fcm;
+package com.pohang_app.pg.phlira_app.fcm;
 
 
 import android.app.ActivityManager;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -23,11 +22,11 @@ import android.view.View;
 import android.widget.Toast;
 
 
-import com.example.pg.phlira_app.IntroPage;
+import com.pohang_app.pg.phlira_app.IntroPage;
 
-import com.example.pg.phlira_app.R;
-import com.example.pg.phlira_app.inc.SettingVar;
-import com.example.pg.phlira_app.msg.ReadMsgData;
+import com.pohang_app.pg.phlira_app.R;
+import com.pohang_app.pg.phlira_app.inc.SettingVar;
+import com.pohang_app.pg.phlira_app.msg.ReadMsgData;
 import com.google.firebase.messaging.RemoteMessage;
 import android.os.CountDownTimer;
 
@@ -126,7 +125,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
          * appCheck = true (앱이 실행중), appCheck = false (앱이 종료됨)
          */
 
-        Intent popupIntent = new Intent(this, com.example.pg.phlira_app.msg.MsgPopup.class)
+        Intent popupIntent = new Intent(this, com.pohang_app.pg.phlira_app.msg.MsgPopup.class)
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 .putExtra("num",num)
                 .putExtra("msg",msg)
