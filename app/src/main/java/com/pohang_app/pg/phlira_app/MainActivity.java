@@ -54,6 +54,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         WebSettings set = mWeb.getSettings();
         set.setJavaScriptEnabled(true);
         set.setBuiltInZoomControls(true);
+        mWeb.getSettings().setDisplayZoomControls(false);
         set.setSupportZoom(true);
         mWeb.setVerticalScrollBarEnabled(true);
         mWeb.setHorizontalScrollBarEnabled(false);
