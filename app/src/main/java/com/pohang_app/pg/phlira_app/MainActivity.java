@@ -73,9 +73,6 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         });
         //mWeb.setWebViewClient(new WebViewClient());
 
-
-
-
         //처음 메인페이지 접속은 세션 셋팅 페이지로 설정
         //세션값들을 설정한다
         mWeb.loadUrl(SettingVar.SET_SESSION + "?id=" + SettingVar.id + "&license=" + SettingVar.license);
