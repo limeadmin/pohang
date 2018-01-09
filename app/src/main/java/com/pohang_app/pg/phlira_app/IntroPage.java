@@ -78,8 +78,11 @@ public class IntroPage extends Activity implements View.OnClickListener{
 
         TelephonyManager telephonyManager = (TelephonyManager) getApplicationContext().getSystemService(getApplicationContext().TELEPHONY_SERVICE);
         //전화번호를 000-0000-0000 형식으로 맞추기
-        SettingVar.phNumber = PhoneNumberUtils.formatNumber(telephonyManager.getLine1Number(), Locale.getDefault().getCountry());
+        //KT인 경우 전화번호가 +82형식으로 저장되기 때문에 +82를 0 으로 리플레이스 시킴
+        String phn = telephonyManager.getLine1Number().replace("-", "").replace("+82", "0");
+        SettingVar.phNumber = PhoneNumberUtils.formatNumber(phn, Locale.getDefault().getCountry());
 
+        Log.d("sbg_test","전화번호 : "+SettingVar.phNumber);
         //메인 이동간에 3초의 딜레이를 줌
         intro_delay = new Handler();
         intro_delay.postDelayed(i_run,3000);
